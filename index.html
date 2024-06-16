@@ -177,6 +177,7 @@
         }
 
         function onDocumentTouchMove(event) {
+            event.preventDefault();
             if (event.touches.length == 1) {
                 event.preventDefault();
                 mouseX = event.touches[0].pageX - windowHalfX;
