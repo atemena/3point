@@ -50,6 +50,19 @@
 
         init();
         animate();
+        const canvas = document.querySelector('canvas');
+
+        canvas.addEventListener('touchstart', function(event) {
+            event.preventDefault(); // Prevent default touch behavior
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', function(event) {
+            event.preventDefault(); // Prevent scrolling/zooming
+        }, { passive: false });
+
+        canvas.addEventListener('touchend', function(event) {
+            event.preventDefault(); // Prevent default touch behavior
+        }, { passive: false });
 
         function init() {
             scene = new THREE.Scene();
