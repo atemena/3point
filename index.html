@@ -6,7 +6,15 @@
     <title>3point</title>
     <style>
         body { margin: 0; }
-        canvas { display: block; }
+        canvas {
+            display: block;
+            touch-action: none; /* Disable touch interactions */
+            -webkit-touch-callout: none; /* Disable callout, e.g., copy/paste menu */
+            -webkit-user-select: none; /* Disable text selection */
+            user-select: none; /* Disable text selection */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove tap highlight */
+        }
+
         #uploadButton {
             position: absolute;
             top: 10px;
@@ -22,6 +30,7 @@
 </head>
 <body>
     <input type="file" id="uploadButton" />
+    <div id="container"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
@@ -49,7 +58,7 @@
 
             renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
+            document.getElementById('container').appendChild(renderer.domElement);
 
             // Improved Lighting Setup
             const ambientLight = new THREE.AmbientLight(0x404040, 2);
